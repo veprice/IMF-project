@@ -40,7 +40,7 @@ else:
 
     ''' RAW DATASETS imported directly from the interwebs'''
     
-    NO= ascii.read('/users/virginiaprice/Documents/Research/OQ-project/Data/kias1033_5_P-MJD-F_MPAJHU_Zall_stellarMass_BPT_SFR_NSA.txt',
+    NO= ascii.read('/users/virginiaprice/Documents/Research/IMF-project/Data/kias1033_5_P-MJD-F_MPAJHU_Zall_stellarMass_BPT_SFR_NSA.txt',
     include_names=('plate','fiberID','MJD','vflag','redshift','absmag','Z12logOH','Z12logOppH','N12logNH','logNO','BPTclass','t3'))
     NO.rename_column('fiberID','fiberid')
         
@@ -51,39 +51,39 @@ else:
     
     
     # Flux in units of maggys
-    PETR = ascii.read('/Users/virginiaprice/Documents/Research/OQ-project/Data/PETR_r.csv',delimiter=',')
+    PETR = ascii.read('/Users/virginiaprice/Documents/Research/IMF-project/Data/PETR_r.csv',delimiter=',')
     PETR=PETR[PETR['petroMag_r']>0.]
     
     '''not actually used any more'''
     # Calibrated fuv flux in uJy #
-    FUV_raw = ascii.read('/Users/virginiaprice/Documents/Research/OQ-project/Data/gal_fluxdata.csv',delimiter=',')
+    FUV_raw = ascii.read('/Users/virginiaprice/Documents/Research/IMF-project/Data/gal_fluxdata.csv',delimiter=',')
     FUV = FUV_raw[FUV_raw['fuv_flux']>0.]
     FUV['fuv_flux']=FUV['fuv_flux']*1e-17 #convert from uJy to erg cm^-2 s^-1 A^-1
     '''end'''
     
-    Ha = ascii.read('/Users/virginiaprice/Documents/Research/OQ-project/Data/Ha_data_comp.txt')
+    Ha = ascii.read('/Users/virginiaprice/Documents/Research/IMF-project/Data/Ha_data_comp.txt')
     Ha = Ha[Ha['Ha_flux']>0.]        # Currently in 1e-17 erg/cm^2/s
     Ha['Ha_flux'] = Ha['Ha_flux']*1.e-17    # Convert to erg/cm^2/s
 
 
     
     # Flux in units of maggys
-    r_fibflux = ascii.read('/Users/virginiaprice/Documents/Research/OQ-project/Data/red_fibmags.csv',delimiter=',')
+    r_fibflux = ascii.read('/Users/virginiaprice/Documents/Research/IMF-project/Data/red_fibmags.csv',delimiter=',')
     r_fibflux = r_fibflux[r_fibflux['fiberMag_r']>0]
     
     
     # GALEX aperture data    
-    aper = ascii.read('/Users/virginiaprice/Documents/Research/OQ-project/Data/gal_aperdata.csv',delimiter=',')
-    aper_err = ascii.read('/Users/virginiaprice/Documents/Research/OQ-project/Data/gal_aperdata_err.csv',delimiter=',')
+    aper = ascii.read('/Users/virginiaprice/Documents/Research/IMF-project/Data/gal_aperdata.csv',delimiter=',')
+    aper_err = ascii.read('/Users/virginiaprice/Documents/Research/IMF-project/Data/gal_aperdata_err.csv',delimiter=',')
     
     
     
     '''Altered datasets  -- defined by "xover" filenames'''
     # Metallicities and SFR data
-    MT = ascii.read('/Users/virginiaprice/Documents/Research/OQ-project/Data/compiled/xover_data_v0.txt')    
+    MT = ascii.read('/Users/virginiaprice/Documents/Research/IMF-project/Data/compiled/xover_data_v0.txt')    
     
     # Metallicities, SFR, and flux data (corrected for aperture)
-    aper_cor = ascii.read('/Users/virginiaprice/Documents/Research/OQ-project/Data/compiled/xover_data_v1.txt')
+    aper_cor = ascii.read('/Users/virginiaprice/Documents/Research/IMF-project/Data/compiled/xover_data_v1.txt')
 
 
 
