@@ -1,0 +1,22 @@
+--- Convert from plate/fiber/MJD to objID ---
+- Drops some (36) galaxies?
+- (Fill these in manually later)
+
+SELECT T.plate,T.fiberid,T.MJD,S.objID
+INTO mydb.xover2
+FROM SpecPhoto as S, mydb.xover as X
+WHERE S.plate = X.plate
+	and S.mjd = X.MJD
+	and S.fiberID = X.fiberid
+	
+	
+--- Pull petrosian magnitudes & radii of galaxies ---
+
+	
+SELECT T.objID,T.plate,T.fiberid,T.MJD,P.petroMag_r,P.petroMagErr_r,P.petroR50_r,P.petroR50Err_r
+INTO mydb.Halpha_R50_R90
+FROM PhotoObjAll as P, mydb.ID_pfmjd_conv as T
+WHERE P.objID = T.objID
+	and P.type = 3
+
+  
